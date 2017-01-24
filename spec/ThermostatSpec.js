@@ -59,4 +59,9 @@ describe("Thermostat", function() {
       thermostat.up();
     }).toThrowError("Temperature is already at maximum");
   });
+  it("should reset the temperature to the default temperature", function(){
+    thermostat.temperature = 24;
+    thermostat.reset();
+    expect(thermostat.temperature).toEqual(20);
+  });
 });
