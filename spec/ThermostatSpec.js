@@ -1,3 +1,15 @@
+describe("Thermostat", function() {
+  var thermostat;
+
+  beforeEach(function() {
+    thermostat = new Thermostat();
+  });
+
+  it("should have a starting temperature of 20 C", function() {
+    expect(thermostat.temperature).toEqual(20);
+  });
+});
+
 // describe("Player", function() {
 //   var player;
 //   var song;
@@ -6,7 +18,7 @@
 //     player = new Player();
 //     song = new Song();
 //   });
-//
+// //
 //   it("should be able to play a Song", function() {
 //     player.play(song);
 //     expect(player.currentlyPlayingSong).toEqual(song);
