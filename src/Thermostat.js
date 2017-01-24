@@ -1,5 +1,6 @@
 function Thermostat() {
   this.temperature = 20;
+  this.minimum = 10;
 }
 
 Thermostat.prototype.up = function() {
@@ -7,23 +8,8 @@ Thermostat.prototype.up = function() {
 };
 
 Thermostat.prototype.down = function() {
+  if (this.temperature === this.minimum) {
+    throw new Error("Temperature is already at minimum");
+  }
   this.temperature -=1;
 };
-// function Player() {
-// }
-// Player.prototype.play = function(song) {
-//   this.currentlyPlayingSong = song;
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.resume = function() {
-//   if (this.isPlaying) {
-//     throw new Error("song is already playing");
-//   }
-//
-//   this.isPlaying = true;
-// };
-//
-// Player.prototype.makeFavorite = function() {
-//   this.currentlyPlayingSong.persistFavoriteStatus(true);
-// };
