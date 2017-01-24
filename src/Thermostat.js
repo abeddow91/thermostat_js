@@ -24,15 +24,18 @@ Thermostat.prototype.down = function() {
 
 Thermostat.prototype.powerSavingModeSwitch = function() {
   if (this.powerSavingMode === true) {
-    this.powerSavingMode = false;
-    this.maximum = this.MAX_TEMP_NO_POWER_SAVING_MODE;
+    this._powerSavingModeSettings(false, this.MAX_TEMP_NO_POWER_SAVING_MODE );
   }
   else {
-    this.powerSavingMode = true;
-    this.maximum = this.MAX_TEMP_POWER_SAVING_MODE;
+    this._powerSavingModeSettings(true, this.MAX_TEMP_POWER_SAVING_MODE );
   }
 };
 
 Thermostat.prototype.reset = function () {
   this.temperature = this.DEFAULT_TEMP;
+};
+
+Thermostat.prototype._powerSavingModeSettings = function(boolean, temperature) {
+  this.powerSavingMode = boolean;
+  this.maximum = temperature;
 };
