@@ -19,7 +19,7 @@ describe("Thermostat", function() {
     expect(thermostat.temperature).toEqual(19);
   });
   it("should have a minimum temperature of 10 C", function() {
-    expect(thermostat.minimum).toEqual(10);
+    expect(thermostat.MIN_TEMP).toEqual(10);
   });
   it("should throw an error if the user tries to put the temperature below 10 C", function() {
     thermostat.temperature = 10;
@@ -46,8 +46,15 @@ describe("Thermostat", function() {
     thermostat.powerSavingModeSwitch();
     expect(thermostat.maximum).toEqual(32);
   });
-  it("should throw an error if the user tries to go over the max temperature", function() {
+  it("should throw an error if the user tries to go over the max temperature in power saving mode", function() {
     thermostat.temperature = 25;
+    expect(function (){
+      thermostat.up();
+    }).toThrowError("Temperature is already at maximum");
+  });
+  it("should throw an error if the user tries to go over the max temperature not in power saving mode", function() {
+    thermostat.powerSavingModeSwitch();
+    thermostat.temperature = 32;
     expect(function (){
       thermostat.up();
     }).toThrowError("Temperature is already at maximum");
