@@ -6,6 +6,9 @@ function Thermostat() {
 }
 
 Thermostat.prototype.up = function() {
+  if (this.temperature === this.maximum) {
+    throw new Error("Temperature is already at maximum");
+  }
   this.temperature += 1;
 };
 
