@@ -2,18 +2,18 @@ function Thermostat() {
   this.temperature = 20;
 }
 
-Thermostat.prototype.up = function () {
+Thermostat.prototype.up = function() {
   this.temperature += 1;
+};
+
+Thermostat.prototype.down = function() {
+  this.temperature -=1;
 };
 // function Player() {
 // }
 // Player.prototype.play = function(song) {
 //   this.currentlyPlayingSong = song;
 //   this.isPlaying = true;
-// };
-//
-// Player.prototype.pause = function() {
-//   this.isPlaying = false;
 // };
 //
 // Player.prototype.resume = function() {

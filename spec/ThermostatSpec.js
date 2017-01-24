@@ -13,6 +13,11 @@ describe("Thermostat", function() {
     thermostat.up();
     expect(thermostat.temperature).toEqual(21);
   });
+
+  it("should decrease the temperature by 1 C", function() {
+    thermostat.down();
+    expect(thermostat.temperature).toEqual(19);
+  });
 });
 
 // describe("Player", function() {
