@@ -25,5 +25,23 @@ describe("Thermostat", function() {
     thermostat.temperature = 10;
     expect(function(){thermostat.down();}).toThrowError("Temperature is already at minimum");
   });
-
+  it("should be in power saving mode when initialized", function() {
+    expect(thermostat.powerSavingMode).toEqual(true);
+  });
+  it("should have a maximum temperature of 25 when initialized", function() {
+    expect(thermostat.maximum).toEqual(25);
+  });
+  it("should be able to turn power saving mode off", function() {
+    thermostat.powerSavingModeSwitch();
+    expect(thermostat.powerSavingMode).toEqual(false);
+  });
+  it("should be able to turn power saving mode on", function() {
+    thermostat.powerSavingModeSwitch();
+    thermostat.powerSavingModeSwitch();
+    expect(thermostat.powerSavingMode).toEqual(true);
+  });
+  it("should be change the max temperature to 32 when not in power saving mode", function() {
+    thermostat.powerSavingModeSwitch();
+    expect(thermostat.maximum).toEqual(32);
+  });
 });
